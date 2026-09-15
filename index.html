@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <title>2048</title>
+    <meta name="description" content="방향키나 스와이프로 타일을 합쳐 2048을 만드는 퍼즐 게임, 실시간 랭킹보드 포함" />
+
+    <meta name="theme-color" content="#faf8ef" />
+    <link rel="icon" type="image/png" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="2048" />
+
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>2048</h1>
+        <div class="scores">
+          <div class="score-box">
+            <div class="label">점수</div>
+            <div class="value" id="current-score">0</div>
+          </div>
+          <div class="score-box">
+            <div class="label">최고점수</div>
+            <div class="value" id="best-score">0</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="toolbar">
+        <button id="new-game-btn">새 게임</button>
+        <span id="win-banner" hidden style="align-self:center;font-weight:700;">🎉 2048 달성! 계속 플레이할 수 있어요</span>
+      </div>
+
+      <div class="board-wrap" id="board-wrap">
+        <div class="board-grid"></div>
+        <div class="tiles-layer"></div>
+      </div>
+
+      <section class="leaderboard-panel">
+        <h2>🏆 실시간 랭킹</h2>
+        <p class="leaderboard-status" id="leaderboard-status">불러오는 중...</p>
+        <ol class="leaderboard-list" id="leaderboard-list"></ol>
+      </section>
+
+      <footer>방향키 또는 화면 스와이프로 타일을 밀어 합쳐보세요.</footer>
+    </div>
+
+    <div class="modal-overlay" id="game-over-overlay" hidden>
+      <div class="modal">
+        <h2>게임 종료</h2>
+        <p>최종 점수: <strong id="final-score">0</strong></p>
+        <form id="name-form">
+          <input type="text" id="name-input" placeholder="이름을 입력하세요" maxlength="20" autocomplete="off" />
+          <div class="actions">
+            <button type="submit">점수 등록</button>
+            <button type="button" class="secondary" id="play-again-btn">다시 시작</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
